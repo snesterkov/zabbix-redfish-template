@@ -1,0 +1,1 @@
+# Zabbix Redfish API monitoring template

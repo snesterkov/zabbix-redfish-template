@@ -1,0 +1,43 @@
+#!/usr/bin/python3
+
+import requests
+import sys
+import urllib3
+import json
+
+
+urllib3.disable_warnings(category=urllib3.exceptions.InsecureRequestWarning)
+
+
+USER  = sys.argv[1]
+PASS  = sys.argv[2]
+HOST  = sys.argv[3]
+ITEM  = sys.argv[4]
+
+discovery = {'data': []}
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+session = requests.Session()
+session.auth = (USER, PASS)
+
+auth = session.post('https://' + HOST, verify=False)
+response = session.get('https://' + HOST + '/redfish/v1/Chassis/Self', verify=False).json()
+
+
+drives   = response['Links']['Drives']
+#power    = response['Power']['@odata.id']
+#thermal  = response['Thermal']['@odata.id']
+
+match ITEM:
+  case 'drives':
+    for drive in list(drives):
+      drive_url = dict(drive)['@odata.id']
+      drive_name = dict(drive)['@odata.id'].rsplit('/', 1)[-1]
+      discovery['data'].append({'{#URL}': drive_url, '{#DRIVE}': drive_name})
+#  case 'power':
+#    discovery['data'].append({'POWER': power})
+#    response = session.get('https://' + HOST + power, verify=False).json()
+#    for ps in list(response['PowerSupplies']):
+#      discovery['data'].append({'POWERSUPPLY': ps['Name']})
+#    for voltage in list(response['Voltages']):
+#      discovery['data'].append({'VOLTAGE': voltage['Name']})

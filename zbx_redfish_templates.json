@@ -1,0 +1,1610 @@
+{
+    "zabbix_export": {
+        "version": "6.2",
+        "date": "2024-11-25T10:17:46Z",
+        "template_groups": [
+            {
+                "uuid": "7df96b18c230490a9a0a9e2307226338",
+                "name": "Templates"
+            }
+        ],
+        "templates": [
+            {
+                "uuid": "194d1e38ee7d4f878791eca3fd24aea8",
+                "template": "Redfish Nesterkov LLD",
+                "name": "Redfish Nesterkov LLD",
+                "description": "Redfish API",
+                "groups": [
+                    {
+                        "name": "Templates"
+                    }
+                ],
+                "items": [
+                    {
+                        "uuid": "3b42a3a8c7244a999d0bc844484ae07d",
+                        "name": "ICMP Ping",
+                        "type": "SIMPLE",
+                        "key": "icmpping",
+                        "history": "7d",
+                        "valuemap": {
+                            "name": "Service state"
+                        },
+                        "triggers": [
+                            {
+                                "uuid": "e0321d2217454798bc9668028ad4f9aa",
+                                "expression": "last(/Redfish Nesterkov LLD/icmpping)=0",
+                                "name": "ICMP Ping down",
+                                "priority": "HIGH"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "c56777052a1a40cba641dca0d6e6f0f4",
+                        "name": "Chassis Manufacturer",
+                        "type": "DEPENDENT",
+                        "key": "redfish.chassis.manufacturer",
+                        "delay": "0",
+                        "history": "7d",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "inventory_link": "TYPE",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.Manufacturer"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$CHASSISURL}]"
+                        }
+                    },
+                    {
+                        "uuid": "2583a3b3b860423bb899ea12c3e5a3b4",
+                        "name": "Chassis Model",
+                        "type": "DEPENDENT",
+                        "key": "redfish.chassis.model",
+                        "delay": "0",
+                        "history": "7d",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "inventory_link": "MODEL",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.Model"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$CHASSISURL}]"
+                        }
+                    },
+                    {
+                        "uuid": "0123b86671db40d29304504421257b19",
+                        "name": "Chassis PartNumber",
+                        "type": "DEPENDENT",
+                        "key": "redfish.chassis.partnumber",
+                        "delay": "0",
+                        "history": "7d",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "inventory_link": "HARDWARE",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.PartNumber"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$CHASSISURL}]"
+                        }
+                    },
+                    {
+                        "uuid": "d980c9058f0b41eaa8805fa006a68808",
+                        "name": "Chassis PowerState",
+                        "type": "DEPENDENT",
+                        "key": "redfish.chassis.powerstate",
+                        "delay": "0",
+                        "history": "7d",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.PowerState"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$CHASSISURL}]"
+                        }
+                    },
+                    {
+                        "uuid": "2c6934a64e564fc1a060fe4f567c76a8",
+                        "name": "Chassis PowerURL",
+                        "type": "DEPENDENT",
+                        "key": "redfish.chassis.powerurl",
+                        "delay": "0",
+                        "history": "7d",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.Power.[\"@odata.id\"]"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$CHASSISURL}]"
+                        }
+                    },
+                    {
+                        "uuid": "664031ae8bfc45d6bdc7ae4428f5f0ac",
+                        "name": "Chassis SerialNumber",
+                        "type": "DEPENDENT",
+                        "key": "redfish.chassis.serial",
+                        "delay": "0",
+                        "history": "7d",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "inventory_link": "SERIALNO_A",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.SerialNumber"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$CHASSISURL}]"
+                        }
+                    },
+                    {
+                        "uuid": "8c70ead3fb7e46c69ca9bf1fdc3a34cf",
+                        "name": "Chassis Status",
+                        "type": "DEPENDENT",
+                        "key": "redfish.chassis.status",
+                        "delay": "0",
+                        "history": "7d",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.Status.Health"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$CHASSISURL}]"
+                        }
+                    },
+                    {
+                        "uuid": "c0d67ef3c1f9421eb33df22ba8db4d27",
+                        "name": "Chassis ThermalURL",
+                        "type": "DEPENDENT",
+                        "key": "redfish.chassis.thermalurl",
+                        "delay": "0",
+                        "history": "7d",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.Thermal.[\"@odata.id\"]"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$CHASSISURL}]"
+                        }
+                    },
+                    {
+                        "uuid": "1d5c766ee4d34346921a598e23357643",
+                        "name": "MemorySummary Status",
+                        "type": "DEPENDENT",
+                        "key": "redfish.systems.memory.status",
+                        "delay": "0",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.Status.Health"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "redfish.systems.memsummary"
+                        },
+                        "triggers": [
+                            {
+                                "uuid": "2d26d3c563f14341b76ea59f5f8f0c1e",
+                                "expression": "last(/Redfish Nesterkov LLD/redfish.systems.memory.status) <> \"OK\"",
+                                "name": "Memory status is  {ITEM.LASTVALUE1}",
+                                "priority": "HIGH"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "0a830728d3c64ad0aa15c66e83d65330",
+                        "name": "MemorySummary TotalSystemMemoryGiB",
+                        "type": "DEPENDENT",
+                        "key": "redfish.systems.memory.total",
+                        "delay": "0",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.TotalSystemMemoryGiB"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "redfish.systems.memsummary"
+                        }
+                    },
+                    {
+                        "uuid": "ddf59d212fff4778aabcfd71769ab27d",
+                        "name": "Systems MemorySummary",
+                        "type": "DEPENDENT",
+                        "key": "redfish.systems.memsummary",
+                        "delay": "0",
+                        "history": "7d",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.MemorySummary"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$SYSTEMSURL}]"
+                        }
+                    },
+                    {
+                        "uuid": "1082ce0d47644306b304793d13db4179",
+                        "name": "ProcessorSummary Count",
+                        "type": "DEPENDENT",
+                        "key": "redfish.systems.processors.count",
+                        "delay": "0",
+                        "history": "7d",
+                        "trends": "0",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.Count"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "redfish.systems.procsummary"
+                        }
+                    },
+                    {
+                        "uuid": "aa4e7536a13847919e305a889ba98c1b",
+                        "name": "ProcessorSummary Model",
+                        "type": "DEPENDENT",
+                        "key": "redfish.systems.processors.model",
+                        "delay": "0",
+                        "history": "7d",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.Model"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "redfish.systems.procsummary"
+                        }
+                    },
+                    {
+                        "uuid": "1874689378af493ab121bd7e5fde9a4b",
+                        "name": "ProcessorSummary Status",
+                        "type": "DEPENDENT",
+                        "key": "redfish.systems.processors.status",
+                        "delay": "0",
+                        "history": "7d",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.Status.Health"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "redfish.systems.procsummary"
+                        },
+                        "triggers": [
+                            {
+                                "uuid": "cec79521a1a947989a20b17a777e0469",
+                                "expression": "last(/Redfish Nesterkov LLD/redfish.systems.processors.status) <> \"OK\"",
+                                "name": "Processors status id {ITEM.LASTVALUE1}",
+                                "priority": "HIGH"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "aa37fe081fb74732b1c5f2008ab0987e",
+                        "name": "Systems ProcessorSummary",
+                        "type": "DEPENDENT",
+                        "key": "redfish.systems.procsummary",
+                        "delay": "0",
+                        "history": "7d",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.ProcessorSummary"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$SYSTEMSURL}]"
+                        }
+                    },
+                    {
+                        "uuid": "bcd2d30312e94333ba41cb8d961ab9b2",
+                        "name": "Chassis",
+                        "type": "EXTERNAL",
+                        "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$CHASSISURL}]",
+                        "delay": "5m",
+                        "history": "7d",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.data"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "6246fbf3027746768c54cc8c643081fe",
+                        "name": "Power",
+                        "type": "EXTERNAL",
+                        "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$POWERURL}]",
+                        "delay": "5m",
+                        "history": "7d",
+                        "trends": "0",
+                        "value_type": "TEXT"
+                    },
+                    {
+                        "uuid": "44d2f305b7f3431b88202e3eee29bbb9",
+                        "name": "Sensors",
+                        "type": "EXTERNAL",
+                        "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$SENSORSURL}]",
+                        "delay": "5m",
+                        "history": "7d",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.data.Members"
+                                ],
+                                "error_handler": "DISCARD_VALUE"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "6fc8cd3e635d49fbb552e32690209107",
+                        "name": "Systems",
+                        "type": "EXTERNAL",
+                        "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$SYSTEMSURL}]",
+                        "delay": "5m",
+                        "history": "7d",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.data"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "3d1af4c78e884622bd3b4869857dcdff",
+                        "name": "Thermal",
+                        "type": "EXTERNAL",
+                        "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$THERMALURL}]",
+                        "delay": "5m",
+                        "history": "7d",
+                        "trends": "0",
+                        "value_type": "TEXT"
+                    }
+                ],
+                "discovery_rules": [
+                    {
+                        "uuid": "04bb2f5223dc470c9bed2a1e772ce292",
+                        "name": "Power PowerSupplies",
+                        "type": "DEPENDENT",
+                        "key": "redfish.power.powersupplies[]",
+                        "delay": "0",
+                        "filter": {
+                            "conditions": [
+                                {
+                                    "macro": "{#POWERSUPPLY}",
+                                    "value": "^[0-9a-zA-Z_]+$",
+                                    "formulaid": "A"
+                                }
+                            ]
+                        },
+                        "lifetime": "7d",
+                        "item_prototypes": [
+                            {
+                                "uuid": "1745644aa10046408d6d024b6421a532",
+                                "name": "Power {#POWERSUPPLY}",
+                                "type": "DEPENDENT",
+                                "key": "redfish.power.powersupplies[{#POWERSUPPLY}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.data.PowerSupplies"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$POWERURL}]"
+                                }
+                            },
+                            {
+                                "uuid": "ce535fb0a67549ed93bfb75bcde9ead9",
+                                "name": "{#POWERSUPPLY} Manufacturer",
+                                "type": "DEPENDENT",
+                                "key": "redfish.power.ps.manufacturer[{#POWERSUPPLY}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$..[?(@.Name == \"{#POWERSUPPLY}\")].Manufacturer"
+                                        ],
+                                        "error_handler": "CUSTOM_VALUE",
+                                        "error_handler_params": "null"
+                                    },
+                                    {
+                                        "type": "LTRIM",
+                                        "parameters": [
+                                            "[\""
+                                        ]
+                                    },
+                                    {
+                                        "type": "RTRIM",
+                                        "parameters": [
+                                            "\"]"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "redfish.power.powersupplies[{#POWERSUPPLY}]"
+                                }
+                            },
+                            {
+                                "uuid": "e2fc0e05930447ae8ce2c05b4c072932",
+                                "name": "{#POWERSUPPLY} Model",
+                                "type": "DEPENDENT",
+                                "key": "redfish.power.ps.model[{#POWERSUPPLY}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$..[?(@.Name == \"{#POWERSUPPLY}\")].Model"
+                                        ],
+                                        "error_handler": "CUSTOM_VALUE",
+                                        "error_handler_params": "null"
+                                    },
+                                    {
+                                        "type": "LTRIM",
+                                        "parameters": [
+                                            "[\""
+                                        ]
+                                    },
+                                    {
+                                        "type": "RTRIM",
+                                        "parameters": [
+                                            "\"]"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "redfish.power.powersupplies[{#POWERSUPPLY}]"
+                                }
+                            },
+                            {
+                                "uuid": "446cfb78378843e1a971e1fc5cfb9737",
+                                "name": "{#POWERSUPPLY} SerialNumber",
+                                "type": "DEPENDENT",
+                                "key": "redfish.power.ps.serial[{#POWERSUPPLY}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$..[?(@.Name == \"{#POWERSUPPLY}\")].SerialNumber"
+                                        ],
+                                        "error_handler": "CUSTOM_VALUE",
+                                        "error_handler_params": "null"
+                                    },
+                                    {
+                                        "type": "LTRIM",
+                                        "parameters": [
+                                            "[\""
+                                        ]
+                                    },
+                                    {
+                                        "type": "RTRIM",
+                                        "parameters": [
+                                            "\"]"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "redfish.power.powersupplies[{#POWERSUPPLY}]"
+                                }
+                            },
+                            {
+                                "uuid": "e3c91d9ae90f4dd0b91a653ff752f1ad",
+                                "name": "{#POWERSUPPLY} Status",
+                                "type": "DEPENDENT",
+                                "key": "redfish.power.ps.status[{#POWERSUPPLY}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$..[?(@.Name == \"{#POWERSUPPLY}\")].Status.Health"
+                                        ],
+                                        "error_handler": "DISCARD_VALUE"
+                                    },
+                                    {
+                                        "type": "LTRIM",
+                                        "parameters": [
+                                            "[\""
+                                        ]
+                                    },
+                                    {
+                                        "type": "RTRIM",
+                                        "parameters": [
+                                            "\"]"
+                                        ]
+                                    },
+                                    {
+                                        "type": "STR_REPLACE",
+                                        "parameters": [
+                                            "null",
+                                            "!"
+                                        ]
+                                    },
+                                    {
+                                        "type": "REGEX",
+                                        "parameters": [
+                                            "^[0-9a-zA-Z_]+$",
+                                            "\\0"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "redfish.power.powersupplies[{#POWERSUPPLY}]"
+                                },
+                                "trigger_prototypes": [
+                                    {
+                                        "uuid": "628e292b54f540bf9bdd397465acde87",
+                                        "expression": "last(/Redfish Nesterkov LLD/redfish.power.ps.status[{#POWERSUPPLY}]) <> \"OK\"",
+                                        "name": "{#POWERSUPPLY} status is {ITEM.LASTVALUE1}",
+                                        "priority": "HIGH"
+                                    }
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$POWERURL}]"
+                        },
+                        "lld_macro_paths": [
+                            {
+                                "lld_macro": "{#POWERSUPPLY}",
+                                "path": "$.Name"
+                            }
+                        ],
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.data.PowerSupplies"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "22a8bf410d074d5fa9a3231223fa3058",
+                        "name": "Power Voltages",
+                        "type": "DEPENDENT",
+                        "key": "redfish.power.voltages[]",
+                        "delay": "0",
+                        "filter": {
+                            "conditions": [
+                                {
+                                    "macro": "{#VOLTAGE}",
+                                    "value": "^[0-9a-zA-Z_]+$",
+                                    "formulaid": "A"
+                                }
+                            ]
+                        },
+                        "lifetime": "7d",
+                        "item_prototypes": [
+                            {
+                                "uuid": "256b247895fe43fa9ae32fccd59a1770",
+                                "name": "{#VOLTAGE} LowerThresholdCritical",
+                                "type": "DEPENDENT",
+                                "key": "redfish.power.voltage.lower[{#VOLTAGE}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "value_type": "FLOAT",
+                                "units": "V",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$..[?(@.Name == \"{#VOLTAGE}\")].LowerThresholdCritical"
+                                        ],
+                                        "error_handler": "CUSTOM_VALUE",
+                                        "error_handler_params": "0"
+                                    },
+                                    {
+                                        "type": "LTRIM",
+                                        "parameters": [
+                                            "["
+                                        ]
+                                    },
+                                    {
+                                        "type": "RTRIM",
+                                        "parameters": [
+                                            "]"
+                                        ]
+                                    },
+                                    {
+                                        "type": "STR_REPLACE",
+                                        "parameters": [
+                                            "null",
+                                            "0"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "redfish.power.voltages[{#VOLTAGE}]"
+                                }
+                            },
+                            {
+                                "uuid": "79174d8b5c0e4cfa940f26937ca96f72",
+                                "name": "{#VOLTAGE} Status",
+                                "type": "DEPENDENT",
+                                "key": "redfish.power.voltage.status[{#VOLTAGE}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$..[?(@.Name == \"{#VOLTAGE}\")].Status.Health"
+                                        ],
+                                        "error_handler": "DISCARD_VALUE"
+                                    },
+                                    {
+                                        "type": "LTRIM",
+                                        "parameters": [
+                                            "[\""
+                                        ]
+                                    },
+                                    {
+                                        "type": "RTRIM",
+                                        "parameters": [
+                                            "\"]"
+                                        ]
+                                    },
+                                    {
+                                        "type": "STR_REPLACE",
+                                        "parameters": [
+                                            "null",
+                                            "!"
+                                        ]
+                                    },
+                                    {
+                                        "type": "REGEX",
+                                        "parameters": [
+                                            "^[0-9a-zA-Z_]+$",
+                                            "\\0"
+                                        ],
+                                        "error_handler": "DISCARD_VALUE"
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "redfish.power.voltages[{#VOLTAGE}]"
+                                },
+                                "trigger_prototypes": [
+                                    {
+                                        "uuid": "0a6e78ff047942199e4367b8607eec37",
+                                        "expression": "last(/Redfish Nesterkov LLD/redfish.power.voltage.status[{#VOLTAGE}]) <> \"OK\"",
+                                        "name": "{#VOLTAGE} status is {ITEM.LASTVALUE1}",
+                                        "priority": "AVERAGE"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "6645c9507b144df88e770126f57e1f29",
+                                "name": "{#VOLTAGE} UpperThresholdCritical",
+                                "type": "DEPENDENT",
+                                "key": "redfish.power.voltage.upper[{#VOLTAGE}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "value_type": "FLOAT",
+                                "units": "V",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$..[?(@.Name == \"{#VOLTAGE}\")].UpperThresholdCritical"
+                                        ],
+                                        "error_handler": "CUSTOM_VALUE",
+                                        "error_handler_params": "999"
+                                    },
+                                    {
+                                        "type": "LTRIM",
+                                        "parameters": [
+                                            "["
+                                        ]
+                                    },
+                                    {
+                                        "type": "RTRIM",
+                                        "parameters": [
+                                            "]"
+                                        ]
+                                    },
+                                    {
+                                        "type": "STR_REPLACE",
+                                        "parameters": [
+                                            "null",
+                                            "999"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "redfish.power.voltages[{#VOLTAGE}]"
+                                }
+                            },
+                            {
+                                "uuid": "551996fed3604741b5758c89ad533682",
+                                "name": "{#VOLTAGE} ReadingVolts",
+                                "type": "DEPENDENT",
+                                "key": "redfish.power.voltage.volts[{#VOLTAGE}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "value_type": "FLOAT",
+                                "units": "V",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$..[?(@.Name == \"{#VOLTAGE}\")].ReadingVolts"
+                                        ],
+                                        "error_handler": "CUSTOM_VALUE",
+                                        "error_handler_params": "0"
+                                    },
+                                    {
+                                        "type": "LTRIM",
+                                        "parameters": [
+                                            "["
+                                        ]
+                                    },
+                                    {
+                                        "type": "RTRIM",
+                                        "parameters": [
+                                            "]"
+                                        ]
+                                    },
+                                    {
+                                        "type": "STR_REPLACE",
+                                        "parameters": [
+                                            "null",
+                                            "0"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "redfish.power.voltages[{#VOLTAGE}]"
+                                }
+                            },
+                            {
+                                "uuid": "69c0f366b3864a30a5b72212909d29e3",
+                                "name": "Power {#VOLTAGE}",
+                                "type": "DEPENDENT",
+                                "key": "redfish.power.voltages[{#VOLTAGE}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "master_item": {
+                                    "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$POWERURL}]"
+                                }
+                            }
+                        ],
+                        "trigger_prototypes": [
+                            {
+                                "uuid": "c894ba7ef3c7441f9c41f27dc48431ce",
+                                "expression": "last(/Redfish Nesterkov LLD/redfish.power.voltage.volts[{#VOLTAGE}]) < last(/Redfish Nesterkov LLD/redfish.power.voltage.lower[{#VOLTAGE}])\nand\nlast(/Redfish Nesterkov LLD/redfish.power.voltage.lower[{#VOLTAGE}]) > 0",
+                                "name": "{#VOLTAGE} voltage < LowerThresholdCritical",
+                                "opdata": "Value: {ITEM.LASTVALUE1} < {ITEM.LASTVALUE2}",
+                                "priority": "HIGH"
+                            },
+                            {
+                                "uuid": "52625582d7c94c98a27ba417794a516b",
+                                "expression": "last(/Redfish Nesterkov LLD/redfish.power.voltage.volts[{#VOLTAGE}]) > last(/Redfish Nesterkov LLD/redfish.power.voltage.upper[{#VOLTAGE}])\nand\nlast(/Redfish Nesterkov LLD/redfish.power.voltage.upper[{#VOLTAGE}]) > 0",
+                                "name": "{#VOLTAGE} voltage > UpperThresholdCritical",
+                                "opdata": "Value: {ITEM.LASTVALUE1} > {ITEM.LASTVALUE2}",
+                                "priority": "HIGH"
+                            }
+                        ],
+                        "master_item": {
+                            "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$POWERURL}]"
+                        },
+                        "lld_macro_paths": [
+                            {
+                                "lld_macro": "{#VOLTAGE}",
+                                "path": "$.Name"
+                            }
+                        ],
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.data.Voltages"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "1466474146174560a725676410f2cb8b",
+                        "name": "Sensors",
+                        "type": "DEPENDENT",
+                        "key": "redfish.sensors[]",
+                        "delay": "0",
+                        "item_prototypes": [
+                            {
+                                "uuid": "a5ac490d150d454b85de4c9878f2d18c",
+                                "name": "Sensor {#SENSORURL} Name",
+                                "type": "DEPENDENT",
+                                "key": "redfish.sensors.name[{#SENSORURL}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.Name"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{#SENSORURL}]"
+                                }
+                            },
+                            {
+                                "uuid": "badd23b011294c558ef044e7dc9f9867",
+                                "name": "Sensor {#SENSORURL} Status",
+                                "type": "DEPENDENT",
+                                "key": "redfish.sensors.status[{#SENSORURL}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.Status.Health"
+                                        ],
+                                        "error_handler": "DISCARD_VALUE"
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{#SENSORURL}]"
+                                }
+                            },
+                            {
+                                "uuid": "147604d3410247648587bbea7ec2f73c",
+                                "name": "Sensor {#SENSORURL}",
+                                "type": "EXTERNAL",
+                                "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{#SENSORURL}]",
+                                "delay": "5m",
+                                "history": "7d",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.data"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        "trigger_prototypes": [
+                            {
+                                "uuid": "d640a4444e184155b96baa99c3dd83cc",
+                                "expression": "last(/Redfish Nesterkov LLD/redfish.sensors.status[{#SENSORURL}]) <> \"OK\"\nand\nlast(/Redfish Nesterkov LLD/redfish.sensors.name[{#SENSORURL}]) <> \"ALWAYS_TRUE\"",
+                                "name": "Sensor {ITEM.LASTVALUE2} status is {ITEM.LASTVALUE1}",
+                                "priority": "AVERAGE"
+                            }
+                        ],
+                        "master_item": {
+                            "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$SENSORSURL}]"
+                        },
+                        "lld_macro_paths": [
+                            {
+                                "lld_macro": "{#SENSORURL}",
+                                "path": "$.[\"@odata.id\"]"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "5343ea54129e46bba785ef63de94370c",
+                        "name": "Thermal Fans",
+                        "type": "DEPENDENT",
+                        "key": "redfish.thermal.fans[]",
+                        "delay": "0",
+                        "filter": {
+                            "conditions": [
+                                {
+                                    "macro": "{#FAN}",
+                                    "value": "^[0-9a-zA-Z_]+$",
+                                    "formulaid": "A"
+                                }
+                            ]
+                        },
+                        "lifetime": "7d",
+                        "item_prototypes": [
+                            {
+                                "uuid": "8318e9a292c0420ea14f87b967633694",
+                                "name": "{#FAN} Reading",
+                                "type": "DEPENDENT",
+                                "key": "redfish.thermal.fan.current[{#FAN}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "units": "rpm",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$..[?(@.Name == \"{#TEMPERATURE}\")].Reading"
+                                        ],
+                                        "error_handler": "CUSTOM_VALUE",
+                                        "error_handler_params": "0"
+                                    },
+                                    {
+                                        "type": "LTRIM",
+                                        "parameters": [
+                                            "["
+                                        ]
+                                    },
+                                    {
+                                        "type": "RTRIM",
+                                        "parameters": [
+                                            "]"
+                                        ]
+                                    },
+                                    {
+                                        "type": "STR_REPLACE",
+                                        "parameters": [
+                                            "null",
+                                            "0"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "redfish.thermal.fans[{#FAN}]"
+                                }
+                            },
+                            {
+                                "uuid": "7d9523c6785146df93cd45df314bcc27",
+                                "name": "{#FAN} LowerThresholdCritical",
+                                "type": "DEPENDENT",
+                                "key": "redfish.thermal.fan.lower[{#FAN}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "units": "rpm",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$..[?(@.Name == \"{#TEMPERATURE}\")].LowerThresholdCritical"
+                                        ],
+                                        "error_handler": "CUSTOM_VALUE",
+                                        "error_handler_params": "0"
+                                    },
+                                    {
+                                        "type": "LTRIM",
+                                        "parameters": [
+                                            "["
+                                        ]
+                                    },
+                                    {
+                                        "type": "RTRIM",
+                                        "parameters": [
+                                            "]"
+                                        ]
+                                    },
+                                    {
+                                        "type": "STR_REPLACE",
+                                        "parameters": [
+                                            "null",
+                                            "0"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "redfish.thermal.fans[{#FAN}]"
+                                }
+                            },
+                            {
+                                "uuid": "a44a18d6fa5242009b1fdd4342d75502",
+                                "name": "{#FAN} Status",
+                                "type": "DEPENDENT",
+                                "key": "redfish.thermal.fan.status[{#FAN}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$..[?(@.Name == \"{#TEMPERATURE}\")].Status.Health"
+                                        ],
+                                        "error_handler": "DISCARD_VALUE"
+                                    },
+                                    {
+                                        "type": "LTRIM",
+                                        "parameters": [
+                                            "[\""
+                                        ]
+                                    },
+                                    {
+                                        "type": "RTRIM",
+                                        "parameters": [
+                                            "\"]"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "redfish.thermal.fans[{#FAN}]"
+                                },
+                                "trigger_prototypes": [
+                                    {
+                                        "uuid": "db2864010ac843209b3123c906d5b091",
+                                        "expression": "last(/Redfish Nesterkov LLD/redfish.thermal.fan.status[{#FAN}]) <> \"OK\"",
+                                        "name": "{#FAN} status is {ITEM.LASTVALUE1}",
+                                        "priority": "AVERAGE"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "cfdf8bbfe0ac498d9784e1f08868b6c9",
+                                "name": "Thermal {#FAN}",
+                                "type": "DEPENDENT",
+                                "key": "redfish.thermal.fans[{#FAN}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.Fans"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$THERMALURL}]"
+                                }
+                            }
+                        ],
+                        "trigger_prototypes": [
+                            {
+                                "uuid": "28a987cfdace4162b55e3344cff5dd21",
+                                "expression": "last(/Redfish Nesterkov LLD/redfish.thermal.fan.current[{#FAN}]) < last(/Redfish Nesterkov LLD/redfish.thermal.fan.lower[{#FAN}])",
+                                "name": "{#FAN} speed < LowerThresholdCritical",
+                                "opdata": "Value: {ITEM.LASTVALUE1} RPM",
+                                "priority": "AVERAGE"
+                            }
+                        ],
+                        "graph_prototypes": [
+                            {
+                                "uuid": "1e4b110bb81f42f5925e9cc2d0c0a7f3",
+                                "name": "Fan speed {#FAN}",
+                                "graph_items": [
+                                    {
+                                        "color": "199C0D",
+                                        "calc_fnc": "ALL",
+                                        "item": {
+                                            "host": "Redfish Nesterkov LLD",
+                                            "key": "redfish.thermal.fan.current[{#FAN}]"
+                                        }
+                                    }
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$THERMALURL}]"
+                        },
+                        "lld_macro_paths": [
+                            {
+                                "lld_macro": "{#FAN}",
+                                "path": "$.Name"
+                            }
+                        ],
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.data.Fans"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "175bbdcbe7454767aae62bf2bc3f98e4",
+                        "name": "Thermal Temperatures",
+                        "type": "DEPENDENT",
+                        "key": "redfish.thermal.temperatures[]",
+                        "delay": "0",
+                        "filter": {
+                            "conditions": [
+                                {
+                                    "macro": "{#TEMPERATURE}",
+                                    "value": "^[0-9a-zA-Z_]+$",
+                                    "formulaid": "A"
+                                }
+                            ]
+                        },
+                        "lifetime": "7d",
+                        "item_prototypes": [
+                            {
+                                "uuid": "672b2e3cef714fa698b5293027d36d14",
+                                "name": "{#TEMPERATURE} ReadingCelsius",
+                                "type": "DEPENDENT",
+                                "key": "redfish.thermal.temp.current[{#TEMPERATURE}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "units": "C",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$..[?(@.Name == \"{#TEMPERATURE}\")].ReadingCelsius"
+                                        ],
+                                        "error_handler": "CUSTOM_VALUE",
+                                        "error_handler_params": "0"
+                                    },
+                                    {
+                                        "type": "LTRIM",
+                                        "parameters": [
+                                            "["
+                                        ]
+                                    },
+                                    {
+                                        "type": "RTRIM",
+                                        "parameters": [
+                                            "]"
+                                        ]
+                                    },
+                                    {
+                                        "type": "STR_REPLACE",
+                                        "parameters": [
+                                            "null",
+                                            "0"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "redfish.thermal.temperatures[{#TEMPERATURE}]"
+                                }
+                            },
+                            {
+                                "uuid": "5b94c1b460224f12914b11fd287bd147",
+                                "name": "{#TEMPERATURE} Status",
+                                "type": "DEPENDENT",
+                                "key": "redfish.thermal.temp.status[{#TEMPERATURE}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$..[?(@.Name == \"{#TEMPERATURE}\")].Status.Health"
+                                        ],
+                                        "error_handler": "DISCARD_VALUE"
+                                    },
+                                    {
+                                        "type": "LTRIM",
+                                        "parameters": [
+                                            "[\""
+                                        ]
+                                    },
+                                    {
+                                        "type": "RTRIM",
+                                        "parameters": [
+                                            "\"]"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "redfish.thermal.temperatures[{#TEMPERATURE}]"
+                                }
+                            },
+                            {
+                                "uuid": "9645ba97f5eb4ea284431391e87bd5d8",
+                                "name": "{#TEMPERATURE} UpperThresholdCritical",
+                                "type": "DEPENDENT",
+                                "key": "redfish.thermal.temp.upper[{#TEMPERATURE}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$..[?(@.Name == \"{#TEMPERATURE}\")].UpperThresholdCritical"
+                                        ],
+                                        "error_handler": "CUSTOM_VALUE",
+                                        "error_handler_params": "999"
+                                    },
+                                    {
+                                        "type": "LTRIM",
+                                        "parameters": [
+                                            "["
+                                        ]
+                                    },
+                                    {
+                                        "type": "RTRIM",
+                                        "parameters": [
+                                            "]"
+                                        ]
+                                    },
+                                    {
+                                        "type": "STR_REPLACE",
+                                        "parameters": [
+                                            "null",
+                                            "999"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "redfish.thermal.temperatures[{#TEMPERATURE}]"
+                                }
+                            },
+                            {
+                                "uuid": "ae2730fabba044dfa29192d4b52f101e",
+                                "name": "Thermal {#TEMPERATURE}",
+                                "type": "DEPENDENT",
+                                "key": "redfish.thermal.temperatures[{#TEMPERATURE}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.data.Temperatures"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$THERMALURL}]"
+                                }
+                            }
+                        ],
+                        "graph_prototypes": [
+                            {
+                                "uuid": "d30e112efb8a4341bd676e2df3e853fc",
+                                "name": "Temperature {#TEMPERATURE}",
+                                "graph_items": [
+                                    {
+                                        "color": "199C0D",
+                                        "calc_fnc": "ALL",
+                                        "item": {
+                                            "host": "Redfish Nesterkov LLD",
+                                            "key": "redfish.thermal.temp.current[{#TEMPERATURE}]"
+                                        }
+                                    }
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{$THERMALURL}]"
+                        },
+                        "lld_macro_paths": [
+                            {
+                                "lld_macro": "{#TEMPERATURE}",
+                                "path": "$.Name"
+                            }
+                        ],
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.data.Temperatures"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "ea3ab17d81db43cea49a112c65ee4e08",
+                        "name": "Drives",
+                        "type": "EXTERNAL",
+                        "key": "rf_lld[{$USER},{$PASSWORD},{IPADDRESS},drives]",
+                        "delay": "5m",
+                        "item_prototypes": [
+                            {
+                                "uuid": "676b33c2d720441fbc5d3ea15ce02651",
+                                "name": "{#DRIVE} Manufacturer",
+                                "type": "DEPENDENT",
+                                "key": "redfish.drive.manufacturer[{#DRIVE}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.Manufacturer"
+                                        ],
+                                        "error_handler": "CUSTOM_VALUE",
+                                        "error_handler_params": "null"
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{#URL},drives]"
+                                }
+                            },
+                            {
+                                "uuid": "b758a719be3c457aa06cba8c7abd84b9",
+                                "name": "{#DRIVE} Model",
+                                "type": "DEPENDENT",
+                                "key": "redfish.drive.model[{#DRIVE}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.Model"
+                                        ],
+                                        "error_handler": "CUSTOM_VALUE",
+                                        "error_handler_params": "null"
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{#URL},drives]"
+                                }
+                            },
+                            {
+                                "uuid": "b3f7ff5b60034024b6734264317a240a",
+                                "name": "{#DRIVE} Protocol",
+                                "type": "DEPENDENT",
+                                "key": "redfish.drive.protocol[{#DRIVE}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.Protocol"
+                                        ],
+                                        "error_handler": "CUSTOM_VALUE",
+                                        "error_handler_params": "null"
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{#URL},drives]"
+                                }
+                            },
+                            {
+                                "uuid": "79795c8384af4435a1c890efcfdc43ad",
+                                "name": "{#DRIVE} SerialNumber",
+                                "type": "DEPENDENT",
+                                "key": "redfish.drive.serialnumber[{#DRIVE}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.SerialNumber"
+                                        ],
+                                        "error_handler": "CUSTOM_VALUE",
+                                        "error_handler_params": "null"
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{#URL},drives]"
+                                }
+                            },
+                            {
+                                "uuid": "2b932984fd0c45b89adee8e016dfaf6e",
+                                "name": "{#DRIVE} Status.Health",
+                                "type": "DEPENDENT",
+                                "key": "redfish.drive.status.health[{#DRIVE}]",
+                                "delay": "0",
+                                "history": "7d",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.Status.Health"
+                                        ],
+                                        "error_handler": "DISCARD_VALUE"
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{#URL},drives]"
+                                },
+                                "trigger_prototypes": [
+                                    {
+                                        "uuid": "c6868862606747a8b5798833fb152fff",
+                                        "expression": "last(/Redfish Nesterkov LLD/redfish.drive.status.health[{#DRIVE}]) <> \"OK\"",
+                                        "name": "{#DRIVE} status is {ITEM.LASTVALUE1}",
+                                        "priority": "HIGH"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "ae31b6c3bc8849f7aff88ec83de6e3b9",
+                                "name": "{#DRIVE}",
+                                "type": "EXTERNAL",
+                                "key": "rf_collect[{$USER},{$PASSWORD},{IPADDRESS},{#URL},drives]",
+                                "delay": "5m",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.data"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.data"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "macros": [
+                    {
+                        "macro": "{$CHASSISURL}",
+                        "value": "/redfish/v1/Chassis/Self",
+                        "description": "Chassis URL"
+                    },
+                    {
+                        "macro": "{$PASSWORD}",
+                        "value": "password",
+                        "description": "User password"
+                    },
+                    {
+                        "macro": "{$POWERURL}",
+                        "value": "/redfish/v1/Chassis/Self/Power",
+                        "description": "Power sensor readings URL"
+                    },
+                    {
+                        "macro": "{$SENSORSURL}",
+                        "value": "/redfish/v1/Chassis/Self/Sensors",
+                        "description": "Resource Collection of Sensor instances URL"
+                    },
+                    {
+                        "macro": "{$SYSTEMSURL}",
+                        "value": "/redfish/v1/Systems/Self",
+                        "description": "System status URL"
+                    },
+                    {
+                        "macro": "{$THERMALURL}",
+                        "value": "/redfish/v1/Chassis/Self/Thermal",
+                        "description": "Thermal sensor readings URL"
+                    },
+                    {
+                        "macro": "{$USER}",
+                        "value": "redfish",
+                        "description": "User name"
+                    }
+                ],
+                "valuemaps": [
+                    {
+                        "uuid": "274b32ce935e4260b88f309cbe2dd382",
+                        "name": "Service state",
+                        "mappings": [
+                            {
+                                "value": "0",
+                                "newvalue": "Down"
+                            },
+                            {
+                                "value": "1",
+                                "newvalue": "Up"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
