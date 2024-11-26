@@ -1154,7 +1154,7 @@
                                     {
                                         "type": "JSONPATH",
                                         "parameters": [
-                                            "$.Fans"
+                                            "$.data.Fans"
                                         ]
                                     }
                                 ],
