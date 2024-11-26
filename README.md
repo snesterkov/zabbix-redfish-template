@@ -1,5 +1,5 @@
 ## Zabbix Redfish API monitoring template
-Monitoring Paramaters:  
+### Monitoring Paramaters:  
 * Chassis: inventory, state  
 * Drives: inventory, state  
 * Power: power supplies, voltage  
@@ -7,12 +7,12 @@ Monitoring Paramaters:
 * Sensors: other sensors  
 * Systems: memeory, CPU: inventory, state  
 
-Implemented:  
+### Implemented:  
 * Low level detection
 * Triggers for state parameters
 * Graphs for numeric parameters
 
-Installation:
+### Installation:  
 Copy externalscripts/* into directory (ExternalScripts parameter). Set the parameter Timeout to  
 the value 20-30 seconds.
 
